@@ -1,0 +1,306 @@
+{
+	"info": {
+		"_postman_id": "88603d97-97d2-4aca-a7c5-86720007d40b",
+		"name": "TaskManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "46748839",
+		"_collection_link": "https://fernando-5315447.postman.co/workspace/Fernando's-Workspace~98d0b396-61d2-4b62-87bb-9209740e513b/collection/46748839-88603d97-97d2-4aca-a7c5-86720007d40b?action=share&source=collection_link&creator=46748839"
+	},
+	"item": [
+		{
+			"name": "users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Correo\": \"admin@example.com\",\r\n    \"Contra\": \"admin_Pwd_25\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{global_path}}/auth/login",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTZW5kVG9rIjp7IklEX3VzZXIiOjEsIk5hbWUiOiJBZG1pbmlzdHJhZG9yIiwiRW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9LCJpYXQiOjE3NTM5OTg0NDEsImV4cCI6MTc1NDAyNzI0MX0.jzYa_5qAffJ9NumT4nCgPyBuP7Gw97e0b_1f4zAyMdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Nombre\": \"Usuario 2\",\r\n    \"Correo\": \"usuario2@gmail.com\",\r\n    \"Telefono\": \"525789931112\",\r\n    \"Contra\": \"Contra_2025Us\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{global_path}}/users/register",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"users",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch User",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTZW5kVG9rIjp7IklEX3VzZXIiOjEsIk5hbWUiOiJBZG1pbmlzdHJhZG9yIiwiRW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9LCJpYXQiOjE3NTM5OTg0NDEsImV4cCI6MTc1NDAyNzI0MX0.jzYa_5qAffJ9NumT4nCgPyBuP7Gw97e0b_1f4zAyMdA",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{global_path}}/users",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Task",
+			"item": [
+				{
+					"name": "Create Task",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTZW5kVG9rIjp7IklEX3VzZXIiOjEsIk5hbWUiOiJBZG1pbmlzdHJhZG9yIiwiRW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9LCJpYXQiOjE3NTM5OTg0NDEsImV4cCI6MTc1NDAyNzI0MX0.jzYa_5qAffJ9NumT4nCgPyBuP7Gw97e0b_1f4zAyMdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\": \"Demo Task\",\r\n    \"Resumen\": \"Tarea demo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{global_path}}/tasks",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Fetch Task by User",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTZW5kVG9rIjp7IklEX3VzZXIiOjEsIk5hbWUiOiJBZG1pbmlzdHJhZG9yIiwiRW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9LCJpYXQiOjE3NTM5OTg0NDEsImV4cCI6MTc1NDAyNzI0MX0.jzYa_5qAffJ9NumT4nCgPyBuP7Gw97e0b_1f4zAyMdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\": \"Demo Task\",\r\n    \"Resumen\": \"Tarea demo\"\r\n}"
+						},
+						"url": {
+							"raw": "{{global_path}}/tasks",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Task",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTZW5kVG9rIjp7IklEX3VzZXIiOjEsIk5hbWUiOiJBZG1pbmlzdHJhZG9yIiwiRW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9LCJpYXQiOjE3NTM5OTg0NDEsImV4cCI6MTc1NDAyNzI0MX0.jzYa_5qAffJ9NumT4nCgPyBuP7Gw97e0b_1f4zAyMdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Titulo\": \"Demo Task 1\",\r\n    \"Resumen\": \"Tarea demo\",\r\n    \"Estado\": 1,\r\n    \"idTask\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{global_path}}/tasks",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Task",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJTZW5kVG9rIjp7IklEX3VzZXIiOjEsIk5hbWUiOiJBZG1pbmlzdHJhZG9yIiwiRW1haWwiOiJhZG1pbkBleGFtcGxlLmNvbSJ9LCJpYXQiOjE3NTM5OTg0NDEsImV4cCI6MTc1NDAyNzI0MX0.jzYa_5qAffJ9NumT4nCgPyBuP7Gw97e0b_1f4zAyMdA",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"idTask\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{global_path}}/tasks",
+							"host": [
+								"{{global_path}}"
+							],
+							"path": [
+								"tasks"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Encriptacion manual",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"admin_Pwd_25\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{global_path}}/login/encrypt",
+					"host": [
+						"{{global_path}}"
+					],
+					"path": [
+						"login",
+						"encrypt"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "global_path",
+			"value": "http://localhost:3005",
+			"type": "string"
+		}
+	]
+}
