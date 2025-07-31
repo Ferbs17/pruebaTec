@@ -1,0 +1,32 @@
+{
+  "name": "managertasks",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Prueba Técnica Arcsa Capital",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ferbs17/tasksManager.git"
+  },
+  "author": "Fernando Zavala Elizondo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ferbs17/tasksManager/issues"
+  },
+  "homepage": "https://github.com/Ferbs17/tasksManager#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.1",
+    "email-validator": "^2.0.4",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.14.3",
+    "nodemon": "^3.1.10",
+    "sequelize": "^6.37.7"
+  }
+}
