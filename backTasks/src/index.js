@@ -31,6 +31,7 @@ const corsOptions = {
   origin: [
     "http://localhost:3000",
     "https://www.postman.com",
+    "http://localhost:4200"
   ], // Indica el dominio permitido para solicitar recursos
   methods: ["GET", "PUT", "POST", "DELETE"], // Métodos HTTP permitidos
   allowedHeaders: ["Content-Type", "Authorization", "user-agent", "api-key"], // Cabeceras permitidas

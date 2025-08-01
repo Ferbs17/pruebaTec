@@ -1,0 +1,56 @@
+<!-- Botones -->
+<div class="mb-4 flex gap-4">
+  <button (click)="openCreateUserForm()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+    Crear usuario
+  </button>
+<button (click)="goToTasks()">👥 Ver Tareas</button>
+</div>
+
+<!-- Formulario de creación -->
+<div *ngIf="creatingUser" class="bg-white p-6 rounded shadow-md border mb-6 max-w-md">
+  <h3 class="text-lg font-semibold mb-4">Nuevo Usuario</h3>
+  <form (ngSubmit)="submitCreateUser()" class="space-y-4">
+    <div>
+      <label class="block mb-1 text-sm font-medium">Nombre</label>
+      <input type="text" [(ngModel)]="newUser.Name" name="name" class="w-full border px-3 py-2 rounded" required />
+    </div>
+    <div>
+      <label class="block mb-1 text-sm font-medium">Correo</label>
+      <input type="email" [(ngModel)]="newUser.Email" name="email" class="w-full border px-3 py-2 rounded" required />
+    </div>
+    <div>
+      <label class="block mb-1 text-sm font-medium">Teléfono</label>
+      <input type="tel" [(ngModel)]="newUser.Phone" name="phone" class="w-full border px-3 py-2 rounded" required />
+    </div>
+    <div>
+      <label class="block mb-1 text-sm font-medium">Contraseña</label>
+      <input type="password" [(ngModel)]="newUser.Password" name="password" class="w-full border px-3 py-2 rounded" required />
+    </div>
+
+    <div class="flex justify-between mt-4">
+      <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Crear</button>
+      <button type="button" (click)="cancelCreateUser()" class="bg-gray-300 text-gray-800 px-4 py-2 rounded">Cancelar</button>
+    </div>
+  </form>
+</div>
+<!-- Tabla de usuarios -->
+<h2 class="text-xl font-bold mb-4">Lista de usuarios</h2>
+
+<table class="min-w-full border border-gray-300 rounded shadow">
+  <thead class="bg-gray-100">
+    <tr>
+      <th class="text-left px-4 py-2 border-b">ID</th>
+      <th class="text-left px-4 py-2 border-b">Nombre</th>
+      <th class="text-left px-4 py-2 border-b">Correo</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users" class="hover:bg-gray-50">
+      <td class="px-4 py-2 border-b">{{ user.ID_user }}</td>
+      <td class="px-4 py-2 border-b">{{ user.Name }}</td>
+      <td class="px-4 py-2 border-b">{{ user.Email }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p *ngIf="!users?.length" class="mt-4 text-gray-500">No hay usuarios disponibles.</p>

@@ -1,0 +1,17 @@
+<p>login works!</p>
+<h2>Login</h2>
+<form (submit)="onSubmit()">
+  <label>
+    Correo:
+    <input type="email" [(ngModel)]="correo" name="correo" required />
+  </label>
+  <br />
+  <label>
+    Contraseña:
+    <input type="password" [(ngModel)]="contra" name="contra" required />
+  </label>
+  <br />
+  <button type="submit">Ingresar</button>
+</form>
+
+<p *ngIf="error" style="color: red;">{{ error }}</p>

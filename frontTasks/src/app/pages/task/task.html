@@ -1,0 +1,88 @@
+<div *ngIf="error" style="color:red;">{{ error }}</div>
+
+<button (click)="goToUsers()">👥 Ver usuarios</button>
+
+
+<label for="statusFilter">Filtrar por estado:</label>
+<select id="statusFilter" [(ngModel)]="statusFilter" (change)="applyFilter()">
+  <option value="">Todos</option>
+  <option value="0">Pendiente</option>
+  <option value="1">Completada</option>
+</select>
+
+<div style="text-align: right; margin-bottom: 20px;">
+  <button class="create-btn" (click)="openCreateForm()">+ Crear tarea</button>
+</div>
+
+
+<table *ngIf="tasks.length">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Título</th>
+      <th>Descripción</th>
+      <th>Estatus</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let t of filteredTasks ">
+      <td>{{ t.ID_task }}</td>
+      <td>{{ t.Title }}</td>
+      <td>{{ t.Description }}</td>
+      <td [ngClass]="t.Status === 0 ? 'status-pendiente' : 'status-completada'">
+        {{ t.Status === 0 ? 'Pendiente' : 'Completada' }}
+      </td>
+      <td>
+  <button (click)="openEditForm(t)">✏️</button>
+  <button (click)="deleteTask(t.ID_task)">🗑️</button>
+
+</td>
+
+    </tr>
+  </tbody>
+</table>
+<div *ngIf="editMode" class="update-form">
+  <h3>Editar tarea</h3>
+  <form (submit)="saveEdit()">
+    <label>
+      Título:
+      <input [(ngModel)]="taskToEdit.Title" name="title" required />
+    </label>
+    <br />
+    <label>
+      Descripción:
+      <input [(ngModel)]="taskToEdit.Description" name="description" required />
+    </label>
+    <br />
+    <label>
+      Estado:
+      <select [(ngModel)]="taskToEdit.Status" name="status" required>
+        <option [value]="0">Pendiente</option>
+        <option [value]="1">Completada</option>
+      </select>
+    </label>
+    <br />
+    <button type="submit">Guardar</button>
+    <button type="button" (click)="editMode = false">Cancelar</button>
+  </form>
+</div>
+
+
+<form *ngIf="creatingTask" class="create-form" (ngSubmit)="submitCreate()">
+  <h3>Crear Nueva Tarea</h3>
+
+  <label for="title">Título</label>
+  <input type="text" id="title" [(ngModel)]="newTask.Title" name="title" required>
+
+  <label for="description">Descripción</label>
+  <textarea id="description" [(ngModel)]="newTask.Description" name="description" required></textarea>
+
+  <div class="form-actions">
+    <button type="submit" class="save-btn">Guardar</button>
+    <button type="button" class="cancel-btn" (click)="cancelCreate()">Cancelar</button>
+  </div>
+</form>
+
+
+<p *ngIf="!tasks.length && !error">No hay tareas disponibles.</p>

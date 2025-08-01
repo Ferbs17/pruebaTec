@@ -1,0 +1,27 @@
+
+
+<h2>Login</h2>
+<form (submit)="onSubmit()">
+  <label>
+    Correo:
+    <input type="email" [(ngModel)]="correo" name="correo" required />
+  </label>
+  <br />
+ <label>
+  Contraseña:
+  <div class="password-wrapper">
+    <input 
+      [type]="mostrarContra ? 'text' : 'password'" 
+      [(ngModel)]="contra" 
+      name="contra" 
+      required 
+    />
+    
+  </div>
+</label>
+  <br />
+  <button type="submit">Ingresar</button>
+</form>
+
+<p *ngIf="error" style="color: red;">{{ error }}</p>
+

@@ -22,10 +22,11 @@ export const Authenticated = async (req, res, next) => {
         process.env.codigo,
         (err, decoded) => {
           if (err) {
+            console.log(err)
             throw {
               //en caso de error envia estado 403 (sin acceso)
               status: 403,
-              message: "Acceso Denegado",
+              message: "Token No válido",
             };
           } else {
             console.log("Token verificado correctamente");
@@ -54,7 +55,7 @@ export const validate = async (user, password) => {
       //definir variables de exito y fracaso
       const exito = { acceso: true, message: "solicitud procesada" };
       const fracaso = { acceso: false, message: "datos incorrectos" };
-      console.log("Validando usuario:", found.Password);
+  
       //para validar contraseña
       const access1 = bcrypt.compareSync(password, found.Password); //compara contraseña
 

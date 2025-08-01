@@ -35,7 +35,8 @@ export const fetchTasks = async (idUser) => {
 export const updateTask = async (data) => {
   try {
     // Buscar la tarea por su id
-    const task = await Task.findByPk(data.idTask);
+    const task = await Task.findOne({
+      where: { ID_task: data.idTask },});
     if (!task) {
       console.error("Tarea no encontrada");
       return false;
